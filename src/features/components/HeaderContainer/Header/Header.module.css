@@ -1,0 +1,47 @@
+.wrapper {
+    width: 100%;
+    height: 80px;
+    /*background-color: #f1b960;*/
+    display: flex;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logoBlock {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20%;
+    height: 80%;
+
+}
+.logoBlock img {
+    width: 60px;
+    height: 60px;
+}
+.logo {
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 200;
+    color: #f1b960;
+}
+.textField {
+
+}
+.footerBlock {
+    text-align: center;
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+.themeButton {
+    transition: 0.3s;
+}
+.themeButton:hover {
+    scale: 1.2;
+}
