@@ -1,36 +1,34 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import s from './Header.module.css'
-import {Box, Button, TextField} from "@mui/material";
-import logo from './../../../common/images/weather_logo.png'
-import {useAppDispatch, useAppSelector} from "../../../common/hooks/hooks";
-import {selectError, selectTheme, setError, setTheme} from "../../../app/appSlice";
+import {Button, TextField} from "@mui/material";
+import logo from '../../../../common/images/weather_logo.png'
+import {ThemeType} from "../../../../app/appSlice";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import {fetchCityThunk, fetchWeatherThunk} from "../Weather/weatherSlice";
+import {CityStateChild, WeatherStateType} from "../../Weather/types";
 
-export const Header = () => {
-    const dispatch = useAppDispatch()
-    const [city, setCity] = useState<string>('')
-    const theme = useAppSelector(selectTheme)
-    const errorTitle = useAppSelector(selectError)
-    const handleChangeTheme = () => {
-        if (theme === 'light') {
-            dispatch(setTheme('dark'))
-        } else dispatch(setTheme('light'))
-    }
-    const handleFetchWeatherOneDay = () => {
-        dispatch(fetchWeatherThunk(29677))
-    }
+type HeaderPropsType = {
+    weather: WeatherStateType
+    cityState: CityStateChild
+    city: string
+    theme: ThemeType
+    errorTitle: string
+    changeTheme: () => void
+    fetchWeather: () => void
+    changeSearchTitle: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+    fetchCity: (e: React.KeyboardEvent<HTMLDivElement>) => void
+    changeRoute: (path: string) => void
+}
+export const Header: FC<HeaderPropsType> = ({
+                                                city,
+                                                fetchCity,
+                                                fetchWeather,
+                                                changeSearchTitle,
+                                                errorTitle,
+                                                changeTheme,
+                                                theme, cityState, weather, changeRoute
+                                            }) => {
 
-    const handleChangeSearchTitle = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setCity(e.target.value)
-        dispatch(setError(''))
-    }
-    const handleFetchCity = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key === 'Enter') {
-            dispatch(fetchCityThunk(city))
-        }
-    }
     return (
         <div className={s.wrapper} color={'primary'}>
             <div className={s.container}>
@@ -38,17 +36,24 @@ export const Header = () => {
                     <img src={logo} alt="logo"/>
                     <div className={s.logo}>Weather</div>
                 </div>
-                {theme === 'light'
-                    ? <DarkModeIcon color={'primary'} onClick={handleChangeTheme} className={s.themeButton}/>
-                    : <LightModeIcon color={'primary'} onClick={handleChangeTheme} className={s.themeButton}/>}
-                <TextField label={errorTitle} error={errorTitle !== ''} value={city} size={'small'} id="outlined-basic" variant="outlined" placeholder={'Type region'}
-                           className={s.textField} onKeyPress={handleFetchCity} onChange={handleChangeSearchTitle}/>
+                {Object.keys(cityState).length !== 0 && <div className={s.regionBlock}>
+                    {Object.keys(cityState).length !== 0 ? <div>{cityState.Country.ID},</div> : ''}
+                    {Object.keys(cityState).length !== 0 ? <div>{cityState.AdministrativeArea.EnglishName},</div> : ''}
+                    {Object.keys(cityState).length !== 0 ? <div>{cityState.LocalizedName},</div> : ''}
+                    {Object.keys(weather).length !== 0 && Object.keys(cityState).length !== 0 ?
+                        <div>{Math.round((weather.DailyForecasts[0].Temperature.Maximum.Value - 32) / 1.8)}°</div> : ''}
+                </div>}
+                <TextField sx={{width: '25%', color: '#ffffff' }} label={errorTitle} error={errorTitle !== ''} value={city} size={'small'} id="outlined-basic"
+                           variant="outlined" placeholder={'Type region'}
+                           className={s.textField} onKeyPress={fetchCity} onChange={changeSearchTitle}/>
                 <div>
-                    <Button variant="text" color={'secondary'} onClick={handleFetchWeatherOneDay}>1 Day</Button>
-                    <Button variant="text">5 Days</Button>
-                    <Button variant="text">10 Days</Button>
+                    <Button disabled={Object.keys(cityState).length == 0} variant="text" color={'primary'} onClick={()=>changeRoute('1day')}>1 Day</Button>
+                    <Button disabled={Object.keys(cityState).length == 0} variant="text" color={'primary'} onClick={()=>changeRoute('5day')}>5 Days</Button>
+                    <Button disabled={Object.keys(cityState).length == 0} variant="text" color={'primary'} onClick={()=>changeRoute('10day')}>10 Days</Button>
                 </div>
-
+                {theme === 'light'
+                    ? <DarkModeIcon color={'primary'} onClick={changeTheme} className={s.themeButton}/>
+                    : <LightModeIcon color={'primary'} onClick={changeTheme} className={s.themeButton}/>}
             </div>
         </div>
     );
