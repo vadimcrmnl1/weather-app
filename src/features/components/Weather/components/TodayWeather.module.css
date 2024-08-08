@@ -1,0 +1,95 @@
+.containerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: max-content;
+}
+.wrapper {
+    margin: 10px 0 10px 0;
+}
+.headerWrapper {
+    min-width: 50%;
+    max-width: 50%;
+    background-color: #e0efff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 2px solid #ffffff;
+    margin: 0 auto;
+}
+
+.bodyWrapper {
+    min-width: 50%;
+    max-width: 50%;
+    background-color: #e0efff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 5px 5px;
+    margin: 0 auto;
+}
+
+.headerBlock {
+    width: 90%;
+    min-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bodyBlock {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+}
+.title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #858585;
+}
+
+.date {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.temperatureBlock {
+    display: flex;
+    align-items: center;
+}
+
+.weather {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.tempValue {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 5px;
+
+}
+.currentBodyWrapper {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 5px 5px;
+}
+.valueBlock {
+    width: 47%;
+}
+.descBlock {
+    width: 47%;
+}
+.description {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ffffff;
+}

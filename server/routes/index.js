@@ -15,13 +15,13 @@ const API_KEY_VALUE = process.env.API_KEY_VALUE
 router.get('/weather/1day/:id', cache('10 minutes'), async (req, res) => {
     try {
         const params = new URLSearchParams({
-            [API_KEY_NAME]: API_KEY_VALUE,
+            [API_KEY_NAME]: API_KEY_VALUE, details: true,
             ...url.parse(req.url, true).query
         })
         const id = req.params.id
         const apiRes = await needle('get', `${API_BASE_URL}forecasts/v1/daily/1day/${id}?${params}`)
         const data = apiRes.body
-
+        console.log('params:', params)
         //Log the request to the public API
         if (process.env.NODE_ENV !== 'production') {
             console.log(`REQUEST: ${API_BASE_URL}forecasts/v1/daily/1day/${id}?${params}`)

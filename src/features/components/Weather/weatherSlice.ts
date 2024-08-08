@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CityStateChild, WeatherStateType} from "./types";
+import {CityStateChild, WeatherFullState} from "./types";
 import {RootState} from "../../../app/store";
 import {getLocations, getWeather} from "../../../api/api";
 import {setAlertError, setError, setIsLoading} from "../../../app/appSlice";
 
 const initialState = {
-    weather: {} as WeatherStateType,
+    weather: {} as WeatherFullState,
     city: {} as CityStateChild
 }
 
@@ -13,7 +13,7 @@ const weatherSlice = createSlice({
     name: 'weather',
     initialState,
     reducers: {
-        fetchWeather: (state, action: PayloadAction<WeatherStateType>) => {
+        fetchWeather: (state, action: PayloadAction<WeatherFullState>) => {
             state.weather = action.payload
         },
         fetchCity: (state, action: PayloadAction<CityStateChild>) => {
@@ -48,18 +48,15 @@ export const fetchCityThunk = createAsyncThunk(
         dispatch(setIsLoading(true))
         try {
             const response = await getLocations.searchCity(city)
-            // dispatch(fetchCity(response.data[0]))
-            if (response.data.Code.length !== 0) {
-                dispatch(setAlertError(response.data.Message))
-            } else if (response && response.data.length !== 0) {
+            if (response && response.data.length !== 0) {
+                dispatch(fetchCity(response.data[0]))
                 dispatch(fetchWeatherThunk(response.data[0].Key))
-
             } else {
                 dispatch(setError('Check your entry is correct'))
                 dispatch(fetchCity({} as CityStateChild))
             }
-        } catch (e) {
-            console.error(e)
+        } catch (e: any) {
+            dispatch(setAlertError(e.response.statusText))
         } finally {
             dispatch(setIsLoading(false))
         }

@@ -1,0 +1,1 @@
+import s1 from './01-s.png'

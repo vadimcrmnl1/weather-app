@@ -7,18 +7,22 @@ import {useAppSelector} from "../common/hooks/hooks";
 import {selectAlertError, selectTheme} from "./appSlice";
 import {HeaderContainer} from "../features/components/HeaderContainer/HeaderContainer";
 import {BackDropLoading} from "../common/components/Backdrop/Backdrop";
-import {Route, Routes} from "react-router";
+import {Route, Routes} from "react-router-dom";
 import {selectCity} from "../features/components/Weather/weatherSlice";
-import {WeatherTable} from "../features/components/Weather/WeatherTable";
+import {WeatherTable} from "../features/components/Weather/WeatherTable/WeatherTable";
 import {AlertComponent} from "../common/components/Alert/Alert";
+import {WeatherContainer} from "../features/components/Weather/WeatherContainer";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = React.createContext({
+    toggleColorMode: () => {
+    }
+});
 
 
 function App() {
     const themeMode = useAppSelector(selectTheme)
     const city = useAppSelector(selectCity)
-    console.log(city)
+    console.log('city:', city)
     const error = useAppSelector(selectAlertError)
     const theme = createTheme({
         palette: {
@@ -28,29 +32,35 @@ function App() {
             },
             secondary: {
                 main: '#8330e8'
-            }
+            },
+            text: {
+                primary: '#000000',
+                secondary: '#ffffff'
+            },
+            background: {
+                paper: '#c7e8ff'
+            },
         },
     });
-    // if (city !== undefined) {
-    //     debugger
-    //     return <Navigate to={`/weather/1day`} replace={true}/>
-    //     // return redirect(`/weather/1day`)
+    // if (Object.keys(city).length !== 0) {
+    // return <Navigate to={`/weather/1day`} replace={true} />
+    // // redirect(`/weather/1day`)
     // }
     return (
-            <ThemeProvider theme={theme}>
-                <CssBaseline/>
-                <BackDropLoading/>
-                {error && <AlertComponent/>}
-                <div className={s.wrapper}>
-                    <HeaderContainer/>
-                    <Routes>
-                        <Route path={`/weather/1day`} element={<WeatherTable/>}/>
-                        <Route path={`/weather/5day`} element={<WeatherTable/>}/>
-                        <Route path={`/weather/10day`} element={<WeatherTable/>}/>
-                    </Routes>
-                    <Footer/>
-                </div>
-            </ThemeProvider>
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <BackDropLoading/>
+            {error && <AlertComponent/>}
+            <div className={s.wrapper}>
+                <HeaderContainer/>
+                <Routes>
+                    <Route path={`/weather/1day`} element={<WeatherContainer/>}/>
+                    <Route path={`/weather/5day`} element={<WeatherTable/>}/>
+                    <Route path={`/weather/10day`} element={<WeatherTable/>}/>
+                </Routes>
+                <Footer/>
+            </div>
+        </ThemeProvider>
 
 
     );

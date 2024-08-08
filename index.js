@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Headers', '*');
     next();
 });
-app.use(limiter)
+// app.use(limiter)
 app.set('trust proxy', 1)
 
 //Set static folder

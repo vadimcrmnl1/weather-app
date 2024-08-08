@@ -46,6 +46,11 @@
 .textField {
 
 }
+.navlinkBlock {
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
 .footerBlock {
     text-align: center;
     margin: 0 auto;
