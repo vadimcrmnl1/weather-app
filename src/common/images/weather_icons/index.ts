@@ -1,1 +1,84 @@
 import s1 from './01-s.png'
+import s2 from './02-s.png'
+import s3 from './03-s.png'
+import s4 from './04-s.png'
+import s5 from './05-s.png'
+import s6 from './06-s.png'
+import s7 from './07-s.png'
+import s8 from './08-s.png'
+import s11 from './11-s.png'
+import s12 from './12-s.png'
+import s13 from './13-s.png'
+import s14 from './14-s.png'
+import s15 from './15-s.png'
+import s16 from './16-s.png'
+import s17 from './17-s.png'
+import s18 from './18-s.png'
+import s19 from './19-s.png'
+import s20 from './20-s.png'
+import s21 from './21-s.png'
+import s22 from './22-s.png'
+import s23 from './23-s.png'
+import s24 from './24-s.png'
+import s25 from './25-s.png'
+import s26 from './26-s.png'
+import s29 from './29-s.png'
+import s30 from './30-s.png'
+import s31 from './31-s.png'
+import s32 from './32-s.png'
+import s33 from './33-s.png'
+import s34 from './34-s.png'
+import s35 from './35-s.png'
+import s36 from './36-s.png'
+import s37 from './37-s.png'
+import s38 from './38-s.png'
+import s39 from './39-s.png'
+import s40 from './40-s.png'
+import s41 from './41-s.png'
+import s42 from './42-s.png'
+import s43 from './43-s.png'
+import s44 from './44-s.png'
+
+export {s6, s7, s5, s14, s15, s16, s17, s18, s19, s20, s22, s23, s26, s24, s12, s29, s31, s33, s32, s34, s36, s37, s35, s38, s39, s40, s13, s11, s4,  s3,  s2, s1, s43, s44, s42, s41 }
+export const weatherIcons = [
+    {id: 1, value: s1},
+    {id: 2, value: s2},
+    {id: 3, value: s3},
+    {id: 4, value: s4},
+    {id: 5, value: s5},
+    {id: 6, value: s6},
+    {id: 7, value: s7},
+    {id: 8, value: s8},
+    {id: 11, value: s11},
+    {id: 12, value: s12},
+    {id: 13, value: s13},
+    {id: 14, value: s14},
+    {id: 15, value: s15},
+    {id: 16, value: s16},
+    {id: 17, value: s17},
+    {id: 18, value: s18},
+    {id: 19, value: s19},
+    {id: 20, value: s20},
+    {id: 21, value: s21},
+    {id: 22, value: s22},
+    {id: 23, value: s23},
+    {id: 24, value: s24},
+    {id: 25, value: s25},
+    {id: 26, value: s26},
+    {id: 29, value: s29},
+    {id: 30, value: s30},
+    {id: 31, value: s31},
+    {id: 32, value: s32},
+    {id: 33, value: s33},
+    {id: 34, value: s34},
+    {id: 35, value: s35},
+    {id: 36, value: s36},
+    {id: 37, value: s37},
+    {id: 38, value: s38},
+    {id: 39, value: s39},
+    {id: 40, value: s40},
+    {id: 41, value: s41},
+    {id: 42, value: s42},
+    {id: 43, value: s43},
+    {id: 44, value: s44},
+]

@@ -39,11 +39,11 @@ export const Header: FC<HeaderPropsType> = ({
                     <div className={s.logo}>Weather</div>
                 </div>
                 {Object.keys(cityState).length !== 0 && <div className={s.regionBlock}>
-                    {Object.keys(cityState).length !== 0 ? <div>{cityState.Country.ID},</div> : ''}
-                    {Object.keys(cityState).length !== 0 ? <div>{cityState.AdministrativeArea.EnglishName},</div> : ''}
-                    {Object.keys(cityState).length !== 0 ? <div>{cityState.LocalizedName},</div> : ''}
+                    {Object.keys(cityState).length !== 0 ? <div style={theme === 'light' ? {color: 'black'} : {color: 'white'}} className={s.regionTitle}>{cityState.Country.ID},</div> : ''}
+                    {Object.keys(cityState).length !== 0 ? <div style={theme === 'light' ? {color: 'black'} : {color: 'white'}} className={s.regionTitle}>{cityState.AdministrativeArea.EnglishName},</div> : ''}
+                    {Object.keys(cityState).length !== 0 ? <div style={theme === 'light' ? {color: 'black'} : {color: 'white'}} className={s.regionTitle}>{cityState.LocalizedName},</div> : ''}
                     {Object.keys(weather).length !== 0 && Object.keys(cityState).length !== 0 ?
-                        <div>{Math.round((weather.DailyForecasts[0].Temperature.Maximum.Value - 32) / 1.8)}°</div> : ''}
+                        <div style={theme === 'light' ? {color: 'black'} : {color: 'white'}} className={s.regionTitle}>{Math.round((weather.DailyForecasts[0].Temperature.Maximum.Value - 32) / 1.8)}°C</div> : ''}
                 </div>}
                 <TextField sx={{width: '25%'}} label={errorTitle} error={errorTitle !== ''} value={city} size={'small'} id="outlined-basic"
                            variant="outlined" placeholder={'Type region'}

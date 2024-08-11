@@ -4,6 +4,7 @@ import {useAppSelector} from "../../../../common/hooks/hooks";
 import {selectWeather} from "../weatherSlice";
 import {WeatherFullState} from "../types";
 import {FC} from "react";
+import {weatherIcons} from "../../../../common/images/weather_icons";
 
 type TodayWeatherPropsType = {
     weather: WeatherFullState
@@ -21,9 +22,9 @@ export const TodayWeather: FC<TodayWeatherPropsType> = ({weather}) => {
             <div className={s.bodyWrapper}>
                 <div className={s.bodyBlock}>
                     <div className={s.temperatureBlock}>
-                        <div className={s.weather}>{weather.DailyForecasts[0].Day.ShortPhrase}</div>
+                        <div className={s.weather}>{weather.DailyForecasts[0].Day.LongPhrase}</div>
                         <div
-                            className={s.tempValue}>Hi: {Math.round((weather.DailyForecasts[0].Temperature.Maximum.Value - 32) / 1.8)}°
+                            className={s.tempValue}>Hi: {Math.round((weather.DailyForecasts[0].RealFeelTemperature.Maximum.Value - 32) / 1.8)}°
                         </div>
                     </div>
                     <div className={s.temperatureBlock}>

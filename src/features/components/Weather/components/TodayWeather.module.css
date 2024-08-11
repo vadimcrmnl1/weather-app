@@ -4,26 +4,28 @@
     justify-content: space-between;
     min-height: max-content;
 }
+
 .wrapper {
     margin: 10px 0 10px 0;
 }
+
 .headerWrapper {
     min-width: 50%;
     max-width: 50%;
-    background-color: #e0efff;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px 5px 0 0;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid;
     margin: 0 auto;
 }
 
 .bodyWrapper {
     min-width: 50%;
     max-width: 50%;
-    background-color: #e0efff;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,12 +41,14 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .bodyBlock {
     width: 90%;
     display: flex;
     flex-direction: column;
 
 }
+
 .title {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -58,16 +62,19 @@
     font-weight: 500;
     font-size: 13px;
     text-transform: uppercase;
+    color: black;
 }
 
 .temperatureBlock {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .weather {
     font-size: 17px;
     font-weight: 300;
+    color: black;
 }
 
 .tempValue {
@@ -75,21 +82,88 @@
     font-weight: 400;
     font-size: 20px;
     margin-left: 5px;
+    color: black;
+
 
 }
+
 .currentBodyWrapper {
+    min-width: 50%;
+    max-width: 50%;
+    height: max-content;
     display: flex;
     justify-content: space-between;
     border-radius: 0 0 5px 5px;
+    background-color: white;
+    margin: 0 auto;
 }
+
 .valueBlock {
     width: 47%;
+    display: flex;
+    align-items: center;
+}
+.valueLogo img {
+    /*width: 50px;*/
+    height: 60px;
+}
+.valueDesc {
+    width: 90%;
+}
+
+.valueDescTemp {
+    display: flex;
+    align-items: end;
+    width: 90%;
+}
+
+.temp {
+    font-size: 80px;
+    color: black;
+    font-weight: 600;
+    line-height: max(1);
+}
+
+.type {
+    color: #858585;
+    position: absolute;
+    float: right;
+    font-size: 24px;
+    margin-left: 100px;
+    font-weight: 300;
+}
+.realFeel {
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
 }
 .descBlock {
     width: 47%;
 }
+
 .description {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #a6a6a6;
+    width: 90%;
+    height: 35px;
+    margin: 10px 0 10px 0;
+}
+.descriptionBottom {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 35px;
+    margin: 10px 0 10px 0;
+}
+.name {
+    font-size: 17px;
+    font-weight: 300;
+    color: black;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
 }
